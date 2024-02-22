@@ -7,6 +7,8 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    maxDuration: 60,
+  }),
   integrations: [react(), tailwind({applyBaseStyles: false,})]
 });
