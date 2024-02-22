@@ -5,8 +5,6 @@ import OpenAI from "openai";
 import { schema, systemMessage } from "../../utils/strings";
 import { error } from 'node_modules/astro/dist/core/logger/core';
 
-export const maxDuration = 60;
-
 export const POST: APIRoute = async ({ request }) => {
 
   // return await debugMode();
