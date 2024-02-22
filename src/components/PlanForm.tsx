@@ -79,8 +79,8 @@ export default function Form() {
             💎
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={submit}>
+        <form onSubmit={submit}>
+          <CardContent>
             <Label htmlFor="distance">
               Target distance
               <Input type="text" id="distance" name="distance" required />
@@ -93,9 +93,11 @@ export default function Form() {
               Duration
               <Input type="text" id="duration" name="duration" required />
             </Label>
+          </CardContent>
+          <CardFooter>
             <Button>Send</Button>
-          </form>
-        </CardContent>
+          </CardFooter>
+        </form>
       </Card>
       {isLoading && <p>Making training plan...</p>}
       {trainingPlan && (

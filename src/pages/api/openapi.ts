@@ -7,7 +7,7 @@ import { schema, systemMessage } from "../../utils/strings";
 
 export const POST: APIRoute = async ({ request }) => {
 
-  return await debugMode();
+  // return await debugMode();
 
   const openai = new OpenAI({ apiKey: import.meta.env.OPENAI_API_KEY });
   const data = await request.formData();
@@ -27,21 +27,21 @@ export const POST: APIRoute = async ({ request }) => {
 
   console.log(completion)
   const answer = completion.choices[0];
-  // Define the directory where the file will be saved
-  const dir = './responses';
-  // Define the full path for the file
-  const filePath = path.join(dir, 'openai_response.json');
-  // Save the response to a file for debugging
-  try {
-    // Ensure the directory exists
-    await fs.mkdir(dir, { recursive: true });
-    // Write the file
-    await fs.writeFile(filePath, JSON.stringify({ message: answer }), 'utf8');
-    console.log(`Response saved to ${filePath}`);
-  } catch (error) {
-    console.error('Error saving the response:', error);
-    // Return an error response or handle it appropriately
-  }
+  // // Define the directory where the file will be saved
+  // const dir = './responses';
+  // // Define the full path for the file
+  // const filePath = path.join(dir, 'openai_response.json');
+  // // Save the response to a file for debugging
+  // try {
+  //   // Ensure the directory exists
+  //   await fs.mkdir(dir, { recursive: true });
+  //   // Write the file
+  //   await fs.writeFile(filePath, JSON.stringify({ message: answer }), 'utf8');
+  //   console.log(`Response saved to ${filePath}`);
+  // } catch (error) {
+  //   console.error('Error saving the response:', error);
+  //   // Return an error response or handle it appropriately
+  // }
   return new Response(
     JSON.stringify({
       message: answer
