@@ -18,6 +18,8 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { Loader2, Zap } from "lucide-react";
+import { InputText } from "./InputText";
 
 interface OpenAiResponse {
   finish_reason: string;
@@ -81,54 +83,68 @@ export default function Form() {
         </CardHeader>
         <form onSubmit={submit}>
           <CardContent>
-            <Label htmlFor="distance">
-              Target distance
-              <Input type="text" id="distance" name="distance" required />
-            </Label>
-            <Label htmlFor="level">
-              Running level
-              <Input type="text" id="level" name="level" required />
-            </Label>
-            <Label htmlFor="duration">
-              Duration
-              <Input type="text" id="duration" name="duration" required />
-            </Label>
+            <InputText
+              label="Target distance"
+              name="distance"
+              placeholder="5km, marathon etc."
+            />
+            <InputText
+              label="Running level"
+              name="level"
+              placeholder="Beginner, intermediate etc."
+            />
+            <InputText
+              label="Training plan duration"
+              name="duration"
+              placeholder="12 weeks, 6 months etc."
+            />
           </CardContent>
           <CardFooter>
-            <Button>Send</Button>
+            {isLoading ? (
+              <Button disabled>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Generating a training plan
+              </Button>
+            ) : (
+              <Button>
+                <Zap className="mr-2 h-4 w-4" />
+                Make training plan
+              </Button>
+            )}
           </CardFooter>
         </form>
       </Card>
-      {isLoading && <p>Making training plan...</p>}
       {trainingPlan && (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Week</TableHead>
-              <TableHead>Day</TableHead>
-              <TableHead>Activity</TableHead>
-              <TableHead>Distance</TableHead>
-              <TableHead>Notes</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {trainingPlan.weeks.map((week) =>
-              week.days.map((day, dayIndex) => (
-                <TableRow key={`week-${week.week}-day-${dayIndex}`}>
-                  {dayIndex === 0 && (
-                    <TableCell rowSpan={week.days.length}>
-                      {week.week}
-                    </TableCell>
-                  )}
-                  <TableCell>{day.day}</TableCell>
-                  <TableCell>{day.activity}</TableCell>
-                  <TableCell>{day.distance || "N/A"}</TableCell>
-                  <TableCell>{day.notes || "N/A"}</TableCell>
-                </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
+        <div className="rounded-md border mt-5">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Week</TableHead>
+                <TableHead>Day</TableHead>
+                <TableHead>Activity</TableHead>
+                <TableHead>Distance</TableHead>
+                <TableHead>Notes</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {trainingPlan.weeks.map((week) =>
+                week.days.map((day, dayIndex) => (
+                  <TableRow key={`week-${week.week}-day-${dayIndex}`}>
+                    {dayIndex === 0 && (
+                      <TableCell rowSpan={week.days.length}>
+                        {week.week}
+                      </TableCell>
+                    )}
+                    <TableCell>{day.day}</TableCell>
+                    <TableCell>{day.activity}</TableCell>
+                    <TableCell>{day.distance || "N/A"}</TableCell>
+                    <TableCell>{day.notes || "N/A"}</TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
       )}
     </>
   );
