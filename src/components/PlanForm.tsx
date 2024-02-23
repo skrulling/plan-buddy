@@ -102,12 +102,12 @@ export default function Form() {
             {isLoading ? (
               <Button disabled>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Generating a training plan
+                Generating your training plan
               </Button>
             ) : (
               <WideButton>
                 <Zap className="mr-2 h-4 w-4" />
-                Make training plan
+                Create your training plan
               </WideButton>
             )}
           </CardFooter>
