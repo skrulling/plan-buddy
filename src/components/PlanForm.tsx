@@ -1,7 +1,5 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "./ui/button";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
 import {
   Table,
   TableBody,
@@ -20,6 +18,7 @@ import {
 } from "./ui/card";
 import { Loader2, Zap } from "lucide-react";
 import { InputText } from "./InputText";
+import { WideButton } from "./WideButton";
 
 interface OpenAiResponse {
   finish_reason: string;
@@ -73,7 +72,7 @@ export default function Form() {
 
   return (
     <>
-      <Card className="w-[350px]">
+      <Card className="sm:w-[450px] w-full">
         <CardHeader>
           <CardTitle>Create a new training plan</CardTitle>
           <CardDescription>
@@ -106,10 +105,10 @@ export default function Form() {
                 Generating a training plan
               </Button>
             ) : (
-              <Button>
+              <WideButton>
                 <Zap className="mr-2 h-4 w-4" />
                 Make training plan
-              </Button>
+              </WideButton>
             )}
           </CardFooter>
         </form>
