@@ -19,10 +19,6 @@ Ready to take your running to the next level? Get started with your personalized
 2. **Customize Your Plan:** Adjust the plan according to your weekly availability and preference for workout days.
 3. **Follow Your Plan:** Each week, you'll receive detailed instructions for every run, including pace, distance, and tips for success.
 
-## Contributing
-
-Interested in contributing to the Running Training Plan Generator? We welcome contributions of all kinds from developers, designers, and running enthusiasts. Check out our [contribution guidelines](CONTRIBUTION.md) for more information on how to get involved.
-
 ## Feedback
 
 We love hearing from our users! If you have any feedback, suggestions, or issues, please reach out to us via [GitHub issues](https://github.com/your-repo/plan-buddy/issues) or our community forum.
