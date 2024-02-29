@@ -5,7 +5,7 @@ import { schema, systemMessage } from "../../utils/strings";
 
 export const POST: APIRoute = async ({ request }) => {
 
-  return await debugMode();
+  // return await debugMode();
 
   try {
 
