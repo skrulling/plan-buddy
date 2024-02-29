@@ -1,12 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PlanForm from '../components/PlanForm';
-import '@/styles/globals.css'
+import Layout from "../layouts/Layout.astro";
+import PlanForm from "../components/PlanForm";
+import "@/styles/globals.css";
 ---
 
 <Layout title="plan-buddy">
-	<main class="flex flex-col items-center p-5">
-		<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-10">Welcome to <span class=" bg-gradient-to-r from-orange-500 from-10% to-red-500 to-90% inline-block text-transparent bg-clip-text">plan-buddy</span></h1>
-		<PlanForm client:load />
-	</main>
+  <main class="flex flex-col items-center p-5">
+    <h1
+      class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-10"
+    >
+      Welcome to <span
+        class="bg-gradient-to-r from-orange-500 from-10% to-red-500 to-90% text-transparent bg-clip-text"
+        >plan-buddy</span>
+    </h1>
+    <PlanForm client:load />
+  </main>
 </Layout>

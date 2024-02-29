@@ -10,8 +10,9 @@ interface InputTextProps {
 export function InputText({ label, name, placeholder }: InputTextProps) {
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label htmlFor={name} />
+      <Label htmlFor={name} className="font-semibold">
       {label}
+      </Label>
       <Input type="text" id={name} name={name} placeholder={placeholder} />
     </div>
   );

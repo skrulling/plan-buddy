@@ -3,10 +3,11 @@ import { Button } from "./ui/button";
 
 interface WideButtonProps {
     children: ReactNode;
+    disabled?: boolean;
 }
 
-export function WideButton({ children }: WideButtonProps) {
+export function WideButton({ children, disabled }: WideButtonProps) {
     return (
-        <Button className="w-full">{children}</Button>
+        <Button className="w-full" disabled={disabled}>{children}</Button>
     )
 }
