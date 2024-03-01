@@ -62,49 +62,51 @@ export default function Form() {
 
   return (
     <>
-      <Card className="sm:w-[450px] w-full">
-        <CardHeader>
-          <CardTitle>Create a new training plan</CardTitle>
-          <CardDescription>
-            Type in some information about your running event, and we will make a plan
-            🚀
-          </CardDescription>
-        </CardHeader>
-        <form onSubmit={submit}>
-          <CardContent>
-            <div className="grid w-full max-w-sm items-center gap-2">
-              <InputText
-                label="Target distance"
-                name="distance"
-                placeholder="5km, marathon etc."
-              />
-              <InputText
-                label="Running level"
-                name="level"
-                placeholder="Beginner, intermediate etc."
-              />
-              <InputText
-                label="Training plan duration"
-                name="duration"
-                placeholder="12 weeks, 6 months etc."
-              />
-            </div>
-          </CardContent>
-          <CardFooter>
-            {isLoading ? (
-              <WideButton disabled>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Generating your training plan...
-              </WideButton>
-            ) : (
-              <WideButton>
-                <Zap className="mr-2 h-5 w-5" />
-                Create your training plan
-              </WideButton>
-            )}
-          </CardFooter>
-        </form>
-      </Card>
+      {!trainingPlan && (
+        <Card className="sm:w-[450px] w-full">
+          <CardHeader>
+            <CardTitle>Create a new training plan</CardTitle>
+            <CardDescription>
+              Type in some information about your running event, and we will make a plan
+              🚀
+            </CardDescription>
+          </CardHeader>
+          <form onSubmit={submit}>
+            <CardContent>
+              <div className="grid w-full max-w-sm items-center gap-2">
+                <InputText
+                  label="Target distance"
+                  name="distance"
+                  placeholder="5km, marathon etc."
+                />
+                <InputText
+                  label="Running level"
+                  name="level"
+                  placeholder="Beginner, intermediate etc."
+                />
+                <InputText
+                  label="Training plan duration"
+                  name="duration"
+                  placeholder="12 weeks, 6 months etc."
+                />
+              </div>
+            </CardContent>
+            <CardFooter>
+              {isLoading ? (
+                <WideButton disabled>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Generating your training plan...
+                </WideButton>
+              ) : (
+                <WideButton>
+                  <Zap className="mr-2 h-5 w-5" />
+                  Create your training plan
+                </WideButton>
+              )}
+            </CardFooter>
+          </form>
+        </Card>
+      )}
       {trainingPlan && <TableDisplay trainingPlan={trainingPlan} />}
     </>
   );
