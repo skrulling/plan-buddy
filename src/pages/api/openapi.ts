@@ -20,8 +20,8 @@ export const POST: APIRoute = async ({ request }) => {
         { role: "system", content: `${systemMessage} ${schema}` },
         { role: "user", content: `target distance: ${distance}. My running level:${level}. The training plan duration should be: ${duration}` }
       ],
-      // model: "gpt-4-turbo-preview",
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o",
+      // model: "gpt-3.5-turbo",
       response_format: { type: "json_object" }
     });
 
